@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: "If you use HieraScript or the HSI-3L benchmark, please cite the paper below."
+title: "HieraScript: Hierarchical Scene Text Script Identification via Parameter-Efficient Vision-Language Learning"
+type: software
+authors:
+  - family-names: Qin
+    given-names: Xugong
+  - family-names: Ling
+    given-names: Li
+  - family-names: Zhu
+    given-names: Xulin
+  - family-names: Yu
+    given-names: Zhicong
+  - family-names: Chen
+    given-names: Junhao
+  - family-names: Zhang
+    given-names: Xinran
+  - family-names: Wang
+    given-names: Yuanyuan
+  - family-names: Zeng
+    given-names: Gangyan
+abstract: >-
+  Scene text script identification is a fundamental task for multilingual text
+  understanding. HieraScript is a hierarchical vision-language framework that
+  combines parameter-efficient transfer learning with hierarchical semantic
+  modeling, together with the HSI-3L benchmark covering 33 languages with
+  three-level hierarchical annotations.
+keywords:
+  - scene text script identification
+  - vision-language learning
+  - parameter-efficient transfer learning
+  - hierarchical classification
+preferred-citation:
+  type: conference-paper
+  title: "HieraScript: Hierarchical Scene Text Script Identification via Parameter-Efficient Vision-Language Learning"
+  authors:
+    - family-names: Qin
+      given-names: Xugong
+    - family-names: Ling
+      given-names: Li
+    - family-names: Zhu
+      given-names: Xulin
+    - family-names: Yu
+      given-names: Zhicong
+    - family-names: Chen
+      given-names: Junhao
+    - family-names: Zhang
+      given-names: Xinran
+    - family-names: Wang
+      given-names: Yuanyuan
+    - family-names: Zeng
+      given-names: Gangyan
+  conference:
+    name: "Pattern Recognition and Computer Vision (PRCV)"
+  year: 2026
+  notes: "To appear"

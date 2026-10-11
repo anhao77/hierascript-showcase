@@ -1,0 +1,5 @@
+theme: jekyll-theme-cayman
+title: HieraScript
+description: 基于参数高效视觉-语言学习的分层场景文字语系识别（PRCV 2026）
+lang: zh-CN
+show_downloads: false
