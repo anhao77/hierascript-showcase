@@ -108,17 +108,7 @@ accuracy at the Macro (M-Acc), Script (S-Acc) and Language (L-Acc) levels, plus 
 | Full model (w/o feature fusion) | 96.51 | 98.88 | 96.60 | 90.53 |
 | **Full model** | **96.66** | **98.92** | **96.68** | **91.03** |
 
-## Release Status
 
-| Item | Status |
-| --- | --- |
-| Paper (camera-ready) | Done |
-| arXiv / DOI link | Coming soon |
-| Source code | Coming soon - will be released at [billqxg/HieraScript](https://github.com/billqxg/HieraScript) |
-| HSI-3L dataset & annotations | Coming soon |
-| Pretrained checkpoints | Coming soon |
-
-Watch or star the [official repository](https://github.com/billqxg/HieraScript) to be notified when the release lands, or follow this page at [anhao77/hierascript-showcase](https://github.com/anhao77/hierascript-showcase).
 
 ## Citation
 

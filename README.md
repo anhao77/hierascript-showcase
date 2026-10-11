@@ -106,17 +106,7 @@ Indic Scene Text on the Roadside、Bharat Scene Text Dataset、TC-STR 7k-word Da
 | 完整模型（去掉特征融合） | 96.51 | 98.88 | 96.60 | 90.53 |
 | **完整模型** | **96.66** | **98.92** | **96.68** | **91.03** |
 
-## 发布状态
 
-| 项目 | 状态 |
-| --- | --- |
-| 论文（camera-ready） | 已完成 |
-| arXiv / DOI 链接 | 即将更新 |
-| 源代码 | 即将开放，地址：[billqxg/HieraScript](https://github.com/billqxg/HieraScript) |
-| HSI-3L 数据集与标注 | 即将开放 |
-| 预训练权重 | 即将开放 |
-
-可先 Watch / Star [官方仓库](https://github.com/billqxg/HieraScript)，开放时会收到通知；也可关注本页仓库 [anhao77/hierascript-showcase](https://github.com/anhao77/hierascript-showcase)。
 
 ## 引用
 
