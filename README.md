@@ -16,7 +16,7 @@
 是多语言场景文字理解的基础环节，为文字识别、信息检索等下游任务提供重要先验。现有方法通常把它当作
 **扁平分类**问题，并依赖视觉-语言模型的**全参数微调**，忽略了语系之间天然存在的**层级关系**。
 本文提出 **HieraScript**：在预训练视觉-语言模型之上，将**参数高效迁移学习**与**层级语义建模**结合，
-实现分层语系识别。
+实现层级语系识别。
 
 ![Teaser](assets/teaser.png)
 
@@ -27,14 +27,9 @@
 
 - **HSI-3L 基准数据集**：带**显式三级层级标注**的多语言场景文字语系识别数据集，覆盖 **33 种语言**、
   **5 个 Macro 类 / 19 个 Script 类 / 33 个 Language 类**，共 **472,087 张**图像。
-- **HieraScript 框架**：基于冻结的 CLIP 骨干，提出**半解耦层级表示**（Semi-Decoupled Hierarchical
-  Representation），同时建模细粒度字形特征与层级语义，且只训练极少参数
-  （RN50 配置下 72.19M 总参数中仅 33.87M 可训练）。
-- **层级一致性约束与置信度校准**：通过一致性蒸馏与层级违背惩罚（Hierarchical Consistency
-  Constraints）保证跨层级预测一致；推理阶段用**基于距离的校准器**（Distance-based Calibrator）
-  估计预测可靠性，提升歧义与退化场景下的鲁棒性。
-- **效果与泛化性**：在 HSI-3L 与 CVSI、MLe2e、SIW-13、MLT 等公开基准上优于扁平 CLIP 基线
-  （zero-shot、全量微调、CoOp、PromptSRC），在跨域设定下亦与专用语系识别方法相当或更优。
+- **HieraScript 框架**：基于冻结的 CLIP 骨干，提出**半解耦层级表示**（Semi-Decoupled Hierarchical Representation），同时建模细粒度字形特征与层级语义，且只训练极少参数。
+- **层级一致性约束与置信度校准**：通过一致性蒸馏与层级违背惩罚（Hierarchical Consistency Constraints）保证跨层级预测一致；推理阶段用**基于距离的校准器**（Distance-based Calibrator）估计预测可靠性，提升歧义与退化场景下的鲁棒性。
+- **效果与泛化性**：在 HSI-3L 与 CVSI、MLe2e、SIW-13、MLT 等公开基准上优于扁平 CLIP 基线（zero-shot、全量微调、CoOp、PromptSRC），在跨域设定下亦与专用语系识别方法相当或更优。
 
 ## 方法概览
 
@@ -43,11 +38,8 @@
 HieraScript 由四个部分构成：
 
 1. **冻结的 CLIP 视觉编码器**：预训练骨干（默认 ResNet-50 变体）全程冻结，实现参数高效的特征提取。
-2. **半解耦层级表示**：三条层级专属卷积分支产生各层级特征，子层级表示通过嵌套特征融合继承父层级
-   语义信息（`z_S = z_S + z_M`，`z_L = z_L + z_S`）。
-3. **层级一致性约束**：将 Language 级预测经层级映射矩阵投影为 Script / Macro 级的软标签
-   （一致性蒸馏），并施加层级违背惩罚，避免子节点置信度高于父节点；配合动态损失平衡与基于不确定性的
-   加权，稳定多层级优化。
+2. **半解耦层级表示**：三条层级专属卷积分支产生各层级特征，子层级表示通过嵌套特征融合继承父层级语义信息。
+3. **层级一致性约束**：将 Language 级预测经层级映射矩阵投影为 Script / Macro 级的软标签 （一致性蒸馏），并施加层级违背惩罚，避免子节点置信度高于父节点；配合动态损失平衡与基于不确定性的加权，稳定多层级优化。
 4. **基于距离的置信度校准**：由分类正确的训练样本估计原型向量，在推理阶段校准歧义或退化样本的置信度。
 
 ## HSI-3L 数据集
@@ -132,10 +124,8 @@ Indic Scene Text on the Roadside、Bharat Scene Text Dataset、TC-STR 7k-word Da
 
 ```bibtex
 @inproceedings{qin2026hierascript,
-  title     = {HieraScript: Hierarchical Scene Text Script Identification via
-               Parameter-Efficient Vision-Language Learning},
-  author    = {Qin, Xugong and Ling, Li and Zhu, Xulin and Yu, Zhicong and
-               Chen, Junhao and Zhang, Xinran and Wang, Yuanyuan and Zeng, Gangyan},
+  title     = {HieraScript: Hierarchical Scene Text Script Identification via Parameter-Efficient Vision-Language Learning},
+  author    = {Xugong Qin, Li Ling, Xulin Zhu, Zhicong Yu, Junhao Chen, Xinran Zhang, Yuanyuan Wang, and Gangyan Zeng},
   booktitle = {Pattern Recognition and Computer Vision (PRCV)},
   year      = {2026},
   note      = {To appear}
@@ -144,21 +134,15 @@ Indic Scene Text on the Roadside、Bharat Scene Text Dataset、TC-STR 7k-word Da
 
 ## 作者与单位
 
-Xugong Qin\*&dagger;、Li Ling\*、Xulin Zhu\*、**Zhicong Yu\***、Junhao Chen\*、Xinran Zhang\*、
-Yuanyuan Wang、Gangyan Zeng&dagger;
+Xugong Qin, Li Ling, Xulin Zhu, Zhicong Yu, Junhao Chen, Xinran Zhang, Yuanyuan Wang, and Gangyan Zeng
 
-南京理工大学网络空间安全学院（School of Cyber Science and Engineering,
-Nanjing University of Science and Technology, Nanjing, China）
+南京理工大学网络空间安全学院（School of Cyber Science and Engineering, Nanjing University of Science and Technology, Nanjing, China）
 
-\* 共同一作。&dagger; 通讯作者。
-
-<!-- TODO: 如需中文姓名，请在此处自行替换 -->
 
 ## 致谢
 
-本工作受江苏省基础研究计划（BK20251441、BK20251414）与江苏省大学生创新训练计划
-（S202510288013）资助。
+本工作受江苏省基础研究计划（BK20251441、BK20251414）与江苏省大学生创新训练计划（S202510288013）资助。
 
 ## 联系方式
 
-论文相关问题请联系通讯作者（Xugong Qin、Gangyan Zeng）。本展示页由共同作者 Zhicong Yu（[@anhao77](https://github.com/anhao77)）维护，欢迎到 [我的 GitHub 主页](https://github.com/anhao77) 交流。
+论文相关问题请联系作者Xugong Qin （[@billqxg](https://github.com/billqxg)）。本展示页由共同作者 Zhicong Yu（[@anhao77](https://github.com/anhao77)）维护，欢迎到 [我的 GitHub 主页](https://github.com/anhao77) 交流。

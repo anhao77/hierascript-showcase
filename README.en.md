@@ -25,18 +25,11 @@ formulation with a frozen vision-language backbone, hierarchy-specific classifie
 
 ## Highlights
 
-- **HSI-3L benchmark.** A multilingual scene text script identification dataset with **explicit three-level
-  hierarchical annotations**, covering **33 languages**, **5 Macro classes**, **19 Script classes**, and
-  **33 Language classes**, for a total of **472,087 images**.
-- **HieraScript framework.** Built on a frozen CLIP backbone, it introduces a **Semi-Decoupled Hierarchical
-  Representation** that models fine-grained glyph characteristics and hierarchical semantics jointly, while
-  tuning only a small fraction of parameters.
-- **Hierarchical consistency + calibration.** Hierarchical Consistency Constraints (consistency distillation and
-  a hierarchy violation penalty) enforce agreement across levels during training, and a **Distance-based
-  Calibrator** estimates prediction reliability at inference time.
+- **HSI-3L benchmark.** A multilingual scene text script identification dataset with **explicit three-level hierarchical annotations**, covering **33 languages**, **5 Macro classes**, **19 Script classes**, and **33 Language classes**, for a total of **472,087 images**.
+- **HieraScript framework.** Built on a frozen CLIP backbone, it introduces a **Semi-Decoupled Hierarchical Representation** that models fine-grained glyph characteristics and hierarchical semantics jointly, while tuning only a small fraction of parameters.
+- **Hierarchical consistency + calibration.** Hierarchical Consistency Constraints (consistency distillation and a hierarchy violation penalty) enforce agreement across levels during training, and a **Distance-based Calibrator** estimates prediction reliability at inference time.
 - **Strong and transferable results.** HieraScript outperforms flat CLIP-based baselines (CLIP zero-shot,
-  CLIP full-tuning, CoOp, PromptSRC) and is competitive with or better than specialized script
-  identification methods, including under cross-domain evaluation.
+  CLIP full-tuning, CoOp, PromptSRC) and is competitive with or better than specialized script identification methods, including under cross-domain evaluation.
 
 ## Method Overview
 
@@ -46,15 +39,9 @@ HieraScript consists of four components:
 
 1. **Frozen CLIP visual encoder** - the pre-trained backbone (ResNet-50 variant by default) stays frozen,
    providing parameter-efficient feature extraction.
-2. **Semi-Decoupled Hierarchical Representation** - three hierarchy-specific convolutional branches produce
-   level-specific features, and child representations inherit ancestor information through nested feature
-   fusion (`z_S = z_S + z_M`, `z_L = z_L + z_S`).
-3. **Hierarchical Consistency Constraints** - language-level predictions are projected to the Script and Macro
-   levels as soft targets (hierarchical consistency distillation), and a hierarchy violation penalty prevents a
-   child node from being more confident than its parent. Adaptive loss balancing and uncertainty-based
-   weighting stabilize the multi-level objectives.
-4. **Distance-based Confidence Calibration** - prototypes estimated from correctly classified training samples
-   calibrate the confidence of ambiguous or degraded inputs at inference time.
+2. **Semi-Decoupled Hierarchical Representation** - three hierarchy-specific convolutional branches produce level-specific features, and child representations inherit ancestor information through nested feature fusion .
+3. **Hierarchical Consistency Constraints** - language-level predictions are projected to the Script and Macro levels as soft targets (hierarchical consistency distillation), and a hierarchy violation penalty prevents a child node from being more confident than its parent. Adaptive loss balancing and uncertainty-based weighting stabilize the multi-level objectives.
+4. **Distance-based Confidence Calibration** - prototypes estimated from correctly classified training samples calibrate the confidence of ambiguous or degraded inputs at inference time.
 
 ## HSI-3L Dataset
 
@@ -141,8 +128,7 @@ If you find this work useful, please cite:
 @inproceedings{qin2026hierascript,
   title     = {HieraScript: Hierarchical Scene Text Script Identification via
                Parameter-Efficient Vision-Language Learning},
-  author    = {Qin, Xugong and Ling, Li and Zhu, Xulin and Yu, Zhicong and
-               Chen, Junhao and Zhang, Xinran and Wang, Yuanyuan and Zeng, Gangyan},
+  author    = {Xugong Qin, Li Ling, Xulin Zhu, Zhicong Yu, Junhao Chen, Xinran Zhang, Yuanyuan Wang, and  Gangyan Zeng},
   booktitle = {Pattern Recognition and Computer Vision (PRCV)},
   year      = {2026},
   note      = {To appear}
@@ -151,12 +137,10 @@ If you find this work useful, please cite:
 
 ## Authors and Affiliations
 
-Xugong Qin\*&dagger;, Li Ling\*, Xulin Zhu\*, **Zhicong Yu\***, Junhao Chen\*, Xinran Zhang\*, Yuanyuan Wang,
-and Gangyan Zeng&dagger;
+Xugong Qin, Li Ling, Xulin Zhu, Zhicong Yu, Junhao Chen, Xinran Zhang, Yuanyuan Wang, and Gangyan Zeng
 
 School of Cyber Science and Engineering, Nanjing University of Science and Technology, Nanjing, China
 
-\* Equal contribution. &dagger; Corresponding authors.
 
 ## Acknowledgements
 
@@ -166,4 +150,4 @@ Undergraduate Training Program for Innovation and Entrepreneurship (S20251028801
 ## Contact
 
 For questions about the paper, please contact the corresponding authors
-(Xugong Qin, Gangyan Zeng). This project page is maintained by Zhicong Yu ([@anhao77](https://github.com/anhao77)), co-first author.
+Xugong Qin （[@billqxg](https://github.com/billqxg)）. This project page is maintained by Zhicong Yu ([@anhao77](https://github.com/anhao77)), co-first author.
